@@ -114,7 +114,7 @@ class App extends Component {
       return (
           <div>
               <DatePicker
-                  defaultValue={moment('2016/01/30 12:12:12','YYYYMMDDHHmmss')}
+                  value={moment('20160131121212','YYYYMMDDHHmmss')}
                   format="YYYY-MM-DD HH:mm:ss"
                   disabledDate={disabledDate}
                   disabledTime={disabledDateTime}

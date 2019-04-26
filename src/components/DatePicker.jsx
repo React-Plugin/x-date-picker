@@ -12,7 +12,31 @@ import DatePicker from 'antd/lib/date-picker';  // 加载 JS
 import 'antd/lib/date-picker/style/css';        // 加载 CSS
 // import Calendar from 'rc-calendar';
 // import 'rc-calendar/assets/index.css';
-export default DatePicker;
+import moment from 'moment';
+
+const BindValue = (WrappedComponnet)=>class extends WrappedComponnet{
+    constructor(props){
+        super(props);
+        let defaultValue = this.props.value;
+        this.state={defaultValue,value:defaultValue}
+    }
+    componentWillReceiveProps(newState){
+        if(typeof newState.value != 'undefined' && newState.value !=this.state.value){
+            this.setState({value:newState.value});
+        }
+    }
+    // render(){
+    //     let props = Object.assign({},this.props);
+    //     props.defaultValue = props.value;
+    //     props.value = this.state.value;
+    //     return <WrappedComponnet {...props}></WrappedComponnet>
+    // }
+}
+console.log(DatePicker)
+console.log(BindValue(DatePicker))
+// export default DatePicker;
+export default BindValue(DatePicker);
 // import DatePicker from 'rc-calendar/lib/Picker';
 // import RangePicker from 'rc-calendar/lib/range-calendar';
 // module.exports = { Calendar, DatePicker };
+
